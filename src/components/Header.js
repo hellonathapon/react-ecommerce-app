@@ -1,6 +1,7 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { AppBar,Toolbar, Container, Typography, Button } from '@material-ui/core';
+import { AppBar,Toolbar, Container, Typography, Button, IconButton, Badge } from '@material-ui/core';
+import { ShoppingCart } from '@material-ui/icons'
 
 const useStyles = makeStyles({
     root: {
@@ -18,7 +19,13 @@ function Header() {
                     <Typography 
                         className={classes.root}
                         fontWeight={500}
-                    >ShopX</Typography> 
+                    >ShopX</Typography>
+                    <IconButton>
+                        <Badge badgeContent={4} color="primary">
+                            <ShoppingCart />
+                        </Badge> 
+                    </IconButton>
+                    <Button>Login</Button>
                     <Button>Register</Button>
                 </Toolbar>
             </Container>
