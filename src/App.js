@@ -1,4 +1,3 @@
-import './App.css';
 import { 
   BrowserRouter as Router,
   Switch,
@@ -6,10 +5,12 @@ import {
 } from 'react-router-dom';
 import Home from './views/Home';
 import Item from './views/Item';
+import CssBaseline from '@material-ui/core/CssBaseline';
 
 function App() {
   return (
     <Router>
+      <CssBaseline/>
       <div>
         <Switch>
           <Route path="/item">
