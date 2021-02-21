@@ -8,7 +8,7 @@ import Rating from '@material-ui/lab/Rating';
 import { Favorite, FavoriteBorder } from '@material-ui/icons';
 
 
-function Products({ products, handleFavState }) {
+function Products({ products, handleFavState, addItemToCart }) {
     return (
         <Grid item xs={12} md={8}>
             <Grid container justify="center" spacing={3}>
@@ -32,12 +32,27 @@ function Products({ products, handleFavState }) {
                                     { p.desc }
                                 </Typography>
                                 <Typography variant="body1" component="h4">
-                                    Price: { p.price }
+                                    ฿{ p.price }
                                 </Typography>
+                                { p.stock > 1 ? (
+                                    <Typography variant="body2" color="textSecondary" component="p">
+                                        Stock: { p.stock }
+                                    </Typography>
+                                ): (
+                                    <Typography variant="body2" color="secondary" component="p">
+                                        Out of Stock
+                                    </Typography>
+                                ) }
+                                
                             </CardContent>
                         </CardActionArea>
                         <CardActions>
-                            <Button variant="contained" color="primary" disableElevation>
+                            <Button 
+                                onClick={ () => addItemToCart(p) }
+                                disabled={p.stock < 1} 
+                                variant="contained" 
+                                color="primary" 
+                                disableElevation>
                                 Add to cart
                             </Button>
         
@@ -56,11 +71,12 @@ function Products({ products, handleFavState }) {
     )
 }
 
-const mapStateToProps = state => ({ products: state.products });
+// const mapStateToProps = state => ({ products: state.products });
 const mapDispatchToProps = (dispatch) => {
     return {
-        handleFavState: (id) => dispatch({ type: "FAVOURITE", payload: id})
+        handleFavState: (id) => dispatch({ type: "FAVOURITE", payload: id}),
+        addItemToCart: (item) => dispatch({ type: "ADD_ITEM", payload: item })
     }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(Products);
+export default connect(null, mapDispatchToProps)(Products);

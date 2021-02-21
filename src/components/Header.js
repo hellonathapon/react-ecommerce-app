@@ -2,6 +2,7 @@ import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
 import { AppBar,Toolbar, Container, Typography, Button, IconButton, Badge, Avatar } from '@material-ui/core';
 import { ShoppingCart } from '@material-ui/icons'
+import { connect } from 'react-redux';
 
 const useStyles = makeStyles({
     root: {
@@ -16,7 +17,7 @@ const useStyles = makeStyles({
     }
 })
 
-function Header() {
+function Header({ inCart }) {
     const classes = useStyles();
 
     return (
@@ -29,17 +30,17 @@ function Header() {
                         color="#333"
                     >ShopX</Typography>
                     <IconButton>
-                        <Badge badgeContent={4} color="primary">
+                        <Badge badgeContent={ inCart.length } color="primary">
                             <ShoppingCart />
                         </Badge> 
                     </IconButton>
-                    <IconButton>
-                        <Avatar className={classes.small}>N</Avatar>
-                    </IconButton>
+                    <Avatar className={classes.small}>N</Avatar>
                 </Toolbar>
             </Container>
         </AppBar>
     )
 }
 
-export default Header
+const mapStateToProps = state => ({ inCart: state.inCart });
+
+export default connect(mapStateToProps) (Header);

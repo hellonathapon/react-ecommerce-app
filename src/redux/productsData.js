@@ -1,0 +1,62 @@
+const initState = {
+    inCart: [],
+    products: [
+        {
+            id: 0,
+            title: 'Blue Jacket',
+            desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+            price: 129,
+            category: 'Clothes',
+            stock: 8,
+            imgUrl: require('../assets/images/blue.jpg').default,
+            isFav: false,
+            rating: 4.5,
+        },
+        {
+            id: 1,
+            title: 'White Jacket',
+            desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+            price: 110,
+            category: 'Clothes',
+            stock: 0,
+            imgUrl: require('../assets/images/gray.jpg').default,
+            isFav: false,
+            rating: 3.0,
+        },
+        {
+            id: 2,
+            title: 'Gray Jacket',
+            desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+            price: 120,
+            category: 'Clothes',
+            stock: 15,
+            imgUrl: require('../assets/images/red-hoodie.jpg').default,
+            isFav: false,
+            rating: 4.0,
+        },
+        {
+            id: 3,
+            title: 'Cap',
+            desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+            price: 229,
+            category: 'Cap',
+            stock: 12,
+            imgUrl: require('../assets/images/cap.png').default,
+            isFav: false,
+            rating: 2.5,
+        },
+        {
+            id: 4,
+            title: 'Blue Shoes',
+            desc: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit',
+            price: 529,
+            category: 'Shoes',
+            stock: 7,
+            imgUrl: require('../assets/images/blue-shoes.png').default,
+            isFav: false,
+            rating: 2.5,
+        },
+    ]
+}
+
+export default initState

@@ -1,43 +1,4 @@
-const initState = {
-    products: [
-        {
-            id: 0,
-            title: 'Blue Jacket',
-            desc: 'lorem ipsum',
-            price: 120,
-            imgUrl: require('../assets/images/blue.jpg').default,
-            isFav: false,
-            rating: 4.5,
-        },
-        {
-            id: 1,
-            title: 'White Jacket',
-            desc: 'lorem ipsum',
-            price: 110,
-            imgUrl: require('../assets/images/gray.jpg').default,
-            isFav: false,
-            rating: 3.0,
-        },
-        {
-            id: 2,
-            title: 'Gray Jacket',
-            desc: 'lorem ipsum',
-            price: 100,
-            imgUrl: require('../assets/images/red-hoodie.jpg').default,
-            isFav: false,
-            rating: 4.0,
-        },
-        {
-            id: 3,
-            title: 'Coca Jacket',
-            desc: 'lorem ipsum',
-            price: 129,
-            imgUrl: require('../assets/images/blue.jpg').default,
-            isFav: false,
-            rating: 2.5,
-        },
-    ]
-}
+import initState from './productsData'
 
 const reducer = (state = initState, action) => {
     switch (action.type) {
@@ -55,7 +16,11 @@ const reducer = (state = initState, action) => {
                     }
                 })
             }
-    
+        case "ADD_ITEM":
+            return {
+                ...state,
+                inCart: [...state.inCart, action.payload]
+            }
         default:
             return state;
     }
