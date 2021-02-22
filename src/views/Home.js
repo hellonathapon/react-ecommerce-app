@@ -9,12 +9,15 @@ import { connect } from 'react-redux';
 
 function Home({ products }) {
     const [ localProductData, setLacalProductData ] = React.useState(products || null);
+    
     const [checkboxValue, setCheckboxValue] = React.useState({
         clothes: true,
         shoes: false,
         cap: false,
     });
+
     const [radioValue, setRadioValue] = React.useState('');
+
     const handleCheckboxChange = (event) => {
         setCheckboxValue({ ...checkboxValue, [event.target.name]: event.target.checked });
     };
@@ -28,9 +31,11 @@ function Home({ products }) {
         { label: '฿300 UP', value: 'high' },
     ];
 
-    const filteredData = () => {
-        return localProductData.filter(item => item.type === checkboxValue)
-    }
+    // extract true values from object into array.
+    const getTrueValFromObj = Object.keys(checkboxValue).filter(k => checkboxValue[k]);
+
+    // filter local data arr by true val of the checkbox.
+    const filteredData = products.filter(k => getTrueValFromObj.includes(k.category));
 
     return (
         <Layout>
@@ -69,7 +74,7 @@ function Home({ products }) {
                         </RadioGroup>
                     </div>
                 </Grid>
-                <Products products={ products }/>
+                <Products products={ filteredData }/>
             </Grid>
         </Layout>
     )
