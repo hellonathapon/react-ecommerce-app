@@ -34,7 +34,7 @@ function Products({ products, handleFavState, addItemToCart }) {
                                 <Typography variant="body1" component="h4">
                                     ฿{ p.price }
                                 </Typography>
-                                { p.stock > 1 ? (
+                                { p.stock >= 1 ? (
                                     <Typography variant="body2" color="textSecondary" component="p">
                                         Stock: { p.stock }
                                     </Typography>
