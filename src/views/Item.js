@@ -11,18 +11,18 @@ function Item({ item }) {
     return (
         <Layout>
             <Grid container justify="center" spacing={3}>
-                <Grid item xs={4}>
+                <Grid item xs={12} lg={4}>
                     <Paper>
                         <Box 
                             display="flex"
                             justifyContent="center"
                             alignItems="center">
                                 
-                            <img style={{maxHeight: "350px", margin: "auto"}} src={p.imgUrl} alt={p.title}/>
+                            <img style={{width: "100%",maxWidth: "300px", margin: "auto"}} src={p.imgUrl} alt={p.title}/>
                         </Box>
                     </Paper>
                 </Grid>
-                <Grid item xs={6}>
+                <Grid item xs={12} lg={6}>
                     <Typography>{p.title}</Typography>
                     <Typography>{p.category}</Typography>
                     <Rating defaultValue={p.rating} precision={0.5} readOnly />

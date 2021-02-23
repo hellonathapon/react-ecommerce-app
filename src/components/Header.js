@@ -8,6 +8,7 @@ import { Link } from 'react-router-dom'
 const useStyles = makeStyles({
     root: {
         flexGrow: 1,
+        color: "#333",
     },
     small: {
         width: 30,
@@ -15,7 +16,7 @@ const useStyles = makeStyles({
     },
     white: {
         backgroundColor: "#fff"
-    }
+    },
 })
 
 function Header({ inCart }) {
@@ -27,7 +28,6 @@ function Header({ inCart }) {
                 <Toolbar>
                     <Typography 
                         className={classes.root}
-                        fontWeight={500}
                     >ShopX</Typography>
                     <Link to="/cart">
                         <IconButton>
