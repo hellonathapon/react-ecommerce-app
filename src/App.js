@@ -5,20 +5,21 @@ import {
 } from 'react-router-dom';
 import Home from './views/Home';
 import Item from './views/Item';
-import CssBaseline from '@material-ui/core/CssBaseline';
+import Cart from './views/Cart';
+// import CssBaseline from '@material-ui/core/CssBaseline';
 
 function App() {
   return (
+      // <CssBaseline/>
     <Router>
-      <CssBaseline/>
       <div>
         <Switch>
-          <Route path="/item">
-            <Item />
-          </Route>
-          <Route path="/">
-            <Home />
-          </Route>
+          {/* NOTE: Nested component into <Route/> is work but to render but component
+              cannot access props, param, history out of the route.
+          */}
+          <Route path="/cart" component={Cart} />
+          <Route path="/:id" component={Item} />
+          <Route path="/" component={Home} />
         </Switch>
       </div>
     </Router>

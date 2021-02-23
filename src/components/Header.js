@@ -3,6 +3,7 @@ import { makeStyles } from '@material-ui/core/styles';
 import { AppBar,Toolbar, Container, Typography, Button, IconButton, Badge, Avatar } from '@material-ui/core';
 import { ShoppingCart } from '@material-ui/icons'
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom'
 
 const useStyles = makeStyles({
     root: {
@@ -27,13 +28,14 @@ function Header({ inCart }) {
                     <Typography 
                         className={classes.root}
                         fontWeight={500}
-                        color="#333"
                     >ShopX</Typography>
-                    <IconButton>
-                        <Badge badgeContent={ inCart.length } color="primary">
-                            <ShoppingCart />
-                        </Badge> 
-                    </IconButton>
+                    <Link to="/cart">
+                        <IconButton>
+                            <Badge badgeContent={ inCart.length } color="primary">
+                                <ShoppingCart />
+                            </Badge> 
+                        </IconButton>
+                    </Link>
                     <Avatar className={classes.small}>N</Avatar>
                 </Toolbar>
             </Container>

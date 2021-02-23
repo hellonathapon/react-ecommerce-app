@@ -1,21 +1,35 @@
 import React from 'react'
 import { connect } from 'react-redux';
+import { Link } from 'react-router-dom';
 import { 
     Grid, Card, Typography, Button, CardContent,
     CardActions,CardActionArea, Box, IconButton 
 } from '@material-ui/core';
 import Rating from '@material-ui/lab/Rating';
 import { Favorite, FavoriteBorder } from '@material-ui/icons';
+import { makeStyles } from '@material-ui/core/styles';
 
+const useStyles = makeStyles({
+    link: {
+        textDecoration: 'none',
+        color: 'inherit'
+    },
+    card: {
+        backgroundColor: '#F6F6F5'
+    }
+})
 
 function Products({ products, handleFavState, addItemToCart }) {
+    const classes = useStyles();
+
     return (
         <Grid item xs={12} md={8}>
             <Grid container justify="center" spacing={3}>
                 { products.map(p => (
                     <Grid item xs={12} md={6}>
                     <Card>
-                        <CardActionArea>
+                        <Link to={`/${p.id}`} className={classes.link}>
+                        <CardActionArea className={classes.card}>
                             <Box 
                                 display="flex"
                                 justifyContent="center"
@@ -46,6 +60,7 @@ function Products({ products, handleFavState, addItemToCart }) {
                                 
                             </CardContent>
                         </CardActionArea>
+                        </Link>
                         <CardActions>
                             <Button 
                                 onClick={ () => addItemToCart(p) }

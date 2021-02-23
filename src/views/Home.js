@@ -8,12 +8,11 @@ import Products from '../components/home/Products'
 import { connect } from 'react-redux';
 
 function Home({ products }) {
-    const [ localProductData, setLacalProductData ] = React.useState(products || null);
-    
+
     const [checkboxValue, setCheckboxValue] = React.useState({
         clothes: true,
-        shoes: false,
-        cap: false,
+        shoes: true,
+        cap: true,
     });
 
     const [radioValue, setRadioValue] = React.useState('');
@@ -25,17 +24,17 @@ function Home({ products }) {
         setRadioValue(event.target.value);
       };
     const radioDataLabels = [
-        { label: 'All', value: 'all' },
-        { label: '฿100 to ฿200', value: 'low' },
-        { label: '฿200 to ฿300', value: 'medium' },
-        { label: '฿300 UP', value: 'high' },
+        { label: '฿100 to ฿200', value: '200' },
+        { label: '฿200 to ฿300', value: '300' },
+        { label: '฿300 UP', value: '500' },
     ];
 
     // extract true values from object into array.
     const getTrueValFromObj = Object.keys(checkboxValue).filter(k => checkboxValue[k]);
 
-    // filter local data arr by true val of the checkbox.
+    // filter product data arr by true val of the checkbox and radio btn.
     const filteredData = products.filter(k => getTrueValFromObj.includes(k.category));
+
 
     return (
         <Layout>
