@@ -29,11 +29,16 @@ function Home({ products }) {
         { label: '฿300 UP', value: '500' },
     ];
 
-    // extract true values out of the object; return arr of keys.
+    // extract true values out of the object; return array of its corresponding keys.
     const getTrueValFromObj = Object.keys(checkboxValue).filter(k => checkboxValue[k]);
 
-    // filter product data arr by true val of the checkbox and radio btn.
-    const filteredData = products.filter(k => k.category.match(getTrueValFromObj));
+    // filter product data arr by true values of the checkbox and radio btn.
+    const filteredData = products.filter(k => {
+        if(!getTrueValFromObj.length) {     
+          return k;                 // return all products if no item is filtered
+        }
+        return getTrueValFromObj.some(i => k.category.match(i));
+    })
 
 
     return (

@@ -9,6 +9,7 @@ const useStyles = makeStyles({
     root: {
         flexGrow: 1,
         color: "#333",
+        textDecoration: "none",
     },
     small: {
         width: 30,
@@ -26,9 +27,11 @@ function Header({ inCart }) {
         <AppBar variant="outlined" className={classes.white}>
             <Container maxWidth="lg">
                 <Toolbar>
-                    <Typography 
-                        className={classes.root}
-                    >ShopX</Typography>
+                    <Link to="/" className={classes.root}>
+                        <Typography 
+                        >ShopX
+                        </Typography>
+                    </Link>
                     <Link to="/cart">
                         <IconButton>
                             <Badge badgeContent={ inCart.length } color="primary">
