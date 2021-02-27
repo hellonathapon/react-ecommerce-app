@@ -2,7 +2,9 @@ import React from 'react'
 import Layout from '../components/Layout'
 import { connect } from 'react-redux'
 import { Grid, Paper, Box, Typography, } from '@material-ui/core'
-import Rating from '@material-ui/lab/Rating';
+import Rating from '@material-ui/lab/Rating'
+import AddToCart from '../components/AddToCart'
+
 
 function Item({ item }) {
     console.log(item)
@@ -27,6 +29,7 @@ function Item({ item }) {
                     <Typography>{p.category}</Typography>
                     <Rating defaultValue={p.rating} precision={0.5} readOnly />
                     <Typography>{p.desc}</Typography>
+                    <AddToCart item={p}/>
                 </Grid>
             </Grid>
         </Layout>

@@ -1,13 +1,12 @@
 import React from 'react'
-import { connect } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { 
-    Grid, Card, Typography, Button, CardContent,
-    CardActions,CardActionArea, Box, IconButton 
+    Grid, Card, Typography, CardContent,
+    CardActions,CardActionArea, Box,
 } from '@material-ui/core';
 import Rating from '@material-ui/lab/Rating';
-import { Favorite, FavoriteBorder } from '@material-ui/icons';
 import { makeStyles } from '@material-ui/core/styles';
+import AddToCart from '../AddToCart'
 
 const useStyles = makeStyles({
     link: {
@@ -19,14 +18,14 @@ const useStyles = makeStyles({
     }
 })
 
-function Products({ products, handleFavState, addItemToCart }) {
+function Products({ products }) {
     const classes = useStyles();
 
     return (
         <Grid item xs={12} md={8}>
             <Grid container justify="center" spacing={3}>
                 { products.map(p => (
-                    <Grid item xs={12} md={6}>
+                    <Grid item xs={12} md={6} key={p.id}>
                     <Card>
                         <Link to={`/${p.id}`} className={classes.link}>
                         <CardActionArea className={classes.card}>
@@ -62,21 +61,7 @@ function Products({ products, handleFavState, addItemToCart }) {
                         </CardActionArea>
                         </Link>
                         <CardActions>
-                            <Button 
-                                onClick={ () => addItemToCart(p) }
-                                disabled={p.stock < 1} 
-                                variant="contained" 
-                                color="primary" 
-                                disableElevation>
-                                Add to cart
-                            </Button>
-        
-                            <IconButton 
-                                color="secondary" 
-                                onClick={() => handleFavState(p.id)}>
-                                    {/* conditionally display icon bases on its `isFav` */}
-                                { p.isFav ? <Favorite/> : <FavoriteBorder /> }
-                            </IconButton>
+                            <AddToCart item={p}/>
                         </CardActions>
                         </Card>
                     </Grid>
@@ -86,12 +71,4 @@ function Products({ products, handleFavState, addItemToCart }) {
     )
 }
 
-// const mapStateToProps = state => ({ products: state.products });
-const mapDispatchToProps = (dispatch) => {
-    return {
-        handleFavState: (id) => dispatch({ type: "FAVOURITE", payload: id}),
-        addItemToCart: (item) => dispatch({ type: "ADD_ITEM", payload: item })
-    }
-}
-
-export default connect(null, mapDispatchToProps)(Products);
+export default Products;

@@ -77,6 +77,7 @@ function Home({ products }) {
                                     control={<Radio color="primary" />}
                                     label={item.label}
                                     value={item.value}
+                                    key={i}
                                 />
                             )) }
                         </RadioGroup>

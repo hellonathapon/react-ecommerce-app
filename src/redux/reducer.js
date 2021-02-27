@@ -19,7 +19,14 @@ const reducer = (state = initState, action) => {
         case "ADD_ITEM":
             return {
                 ...state,
-                inCart: [...state.inCart, action.payload],
+                inCart: {
+                    ...state.inCart,
+                    ids: [...state.inCart.ids, action.payload.id],
+                    quantity: {
+                        ...state.inCart.quantity, 
+                        [action.payload.id]:  isNaN(state.inCart.quantity[action.payload.id]) ? 1 : state.inCart.quantity[action.payload.id] + 1
+                    }
+                },
                 products: state.products.map(k => {
                     if(k.id === action.payload.id){       // reduce stock by 1 
                         return {                          // when item is add to cart

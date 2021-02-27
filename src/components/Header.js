@@ -34,7 +34,7 @@ function Header({ inCart }) {
                     </Link>
                     <Link to="/cart">
                         <IconButton>
-                            <Badge badgeContent={ inCart.length } color="primary">
+                            <Badge badgeContent={ inCart.ids.length } color="primary">
                                 <ShoppingCart />
                             </Badge> 
                         </IconButton>

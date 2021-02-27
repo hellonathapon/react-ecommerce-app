@@ -1,5 +1,8 @@
 const initState = {
-    inCart: [],
+    inCart: {
+        ids: [],
+        quantity: {}
+    },
     products: [
         {
             id: 0,
