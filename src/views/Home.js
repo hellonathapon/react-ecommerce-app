@@ -1,7 +1,7 @@
 import React from 'react';
 import { 
     Grid,FormGroup, FormControlLabel, Checkbox, 
-    Typography, RadioGroup, Radio, Divider,
+    Typography,
 } from '@material-ui/core';
 import Layout from '../components/Layout';
 import Products from '../components/home/Products'
@@ -18,16 +18,6 @@ function Home({ products }) {
     const handleCheckboxChange = (event) => {
         setCheckboxValue({ ...checkboxValue, [event.target.name]: event.target.checked });
     };
-
-    const [radioValue, setRadioValue] = React.useState('');
-    const handleRadioChange = (event) => {
-        setRadioValue(event.target.value);
-    };
-    const radioDataLabels = [
-        { label: '฿100 to ฿200', value: '200' },
-        { label: '฿200 to ฿300', value: '300' },
-        { label: '฿300 UP', value: '500' },
-    ];
 
     // extract true values out of the object; return array of its corresponding keys.
     const getTrueValFromObj = Object.keys(checkboxValue).filter(k => checkboxValue[k]);
@@ -65,22 +55,6 @@ function Home({ products }) {
                                 label="Plants"
                             />
                         </FormGroup>
-                        
-                        <Divider />
-
-                        <Typography variant="h5" id="range-slider" gutterBottom>
-                            Price range
-                        </Typography>
-                        <RadioGroup value={radioValue} onChange={handleRadioChange}>
-                            { radioDataLabels.map((item, i) => (
-                                <FormControlLabel  
-                                    control={<Radio color="primary" />}
-                                    label={item.label}
-                                    value={item.value}
-                                    key={i}
-                                />
-                            )) }
-                        </RadioGroup>
                     </div>
                 </Grid>
                 <Products products={ filteredData }/>

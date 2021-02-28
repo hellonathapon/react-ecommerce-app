@@ -9,24 +9,24 @@ const useStyles = makeStyles({
         display: "flex",
         justifyContent: "space-between",
     },
-    pad: {
-        padding: ".5rem"
+    flex: {
+        display: "flex",
+        justifyContent: "space-between",
+        margin: "1rem 0"
     }
 })
 
 function Cart({ products, inCart }) {
     const classes = useStyles()
-    console.log(inCart)
 
-    const calcTotal = inCart.length ? inCart.reduce((sum, cur) => sum + cur.price, 0) : 0;
-
-    console.log(inCart)
-
+    // calculate total price with each item quantity multiply
+    const calcTotal = products.map(p => inCart.quantity[p.id] > 0 ? p.price * inCart.quantity[p.id] : 0).reduce((s, i) => s + i);
+    
     return (
         <Layout>
             <Grid container justify="center" spacing={3}>
-                <Grid item xs={6}>
-                    <Paper className={classes.pad}>
+                <Grid item xs={12} md={6}>
+                    <Paper style={{padding: "1rem"}}>
                         {/* if there's id stored in inCart */}
                         { inCart.ids.length !== 0 ? products.map(m => (
                             <div key={m.id}>
@@ -34,14 +34,14 @@ function Cart({ products, inCart }) {
                                 { inCart.quantity[m.id] > 0 && (
                                     <Box 
                                         display="flex"
-                                        justifyContent="center"
+                                        justifyContent="space-between"
                                         alignItems="center">
                                             
-                                        <img style={{maxHeight: "200px", margin: "auto"}} src={m.imgUrl} alt={m.title}/>
+                                        <img style={{maxHeight: "100px"}} src={m.imgUrl} alt={m.title}/>
                                         <article style={{display: "flex", flexFlow: "column wrap", alignItems: "flex-end"}}>
-                                            <Typography variant="h5">{m.title}</Typography>
+                                            <Typography variant="h6">{m.title}</Typography>
                                             <Typography variant="p">Quantity: <b>{inCart.quantity[m.id]}</b></Typography>
-                                            <Typography variant="p">Price: { m.price * inCart.quantity[m.id] }</Typography>
+                                            <Typography variant="p">{ m.price * inCart.quantity[m.id] }฿</Typography>
                                         </article>
                                     </Box>
                                 ) }
@@ -51,11 +51,18 @@ function Cart({ products, inCart }) {
                         ) }
                     </Paper>
                 </Grid>
-                <Grid item xs={4}>
-                    <Paper style={{padding: "0.5rem"}}>
+                <Grid item xs={12} md={4}>
+                    <Paper style={{padding: "1rem"}}>
                         <Typography variant="h5">Total and Checkout</Typography>   
-                        <Typography>Total: { calcTotal }฿</Typography>   
-                        <Typography>+Shipping (25): { calcTotal + 25 }฿</Typography>   
+                        <Box className={classes.flex}>
+                            <Typography>Total Amount</Typography> 
+                            <Typography>{ calcTotal }฿</Typography> 
+                        </Box>
+                        <Box className={classes.flex}>
+                            <Typography>+Shipping (25฿)</Typography> 
+                            <Typography><b>{ calcTotal + 25 }</b>฿</Typography> 
+                        </Box>
+                          
                         <Button style={{marginTop: ".5rem"}} variant="outlined" color="primary">Check Out</Button>
                     </Paper> 
                 </Grid>

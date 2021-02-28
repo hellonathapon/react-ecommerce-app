@@ -22,7 +22,7 @@ const initState = {
             price: 1000,
             category: 'motorcycle',
             stock: 7,
-            imgUrl: require('../assets/images/honda.png').default,
+            imgUrl: require('../assets/images/bike.png').default,
             isFav: false,
             rating: 2.5,
         },

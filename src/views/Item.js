@@ -7,9 +7,9 @@ import AddToCart from '../components/AddToCart'
 
 
 function Item({ item }) {
-    console.log(item)
 
     const p = item[0]
+    
     return (
         <Layout>
             <Grid container justify="center" spacing={3}>
