@@ -40,8 +40,8 @@ function Cart({ products, inCart }) {
                                         <img style={{maxHeight: "100px"}} src={m.imgUrl} alt={m.title}/>
                                         <article style={{display: "flex", flexFlow: "column wrap", alignItems: "flex-end"}}>
                                             <Typography variant="h6">{m.title}</Typography>
-                                            <Typography variant="p">Quantity: <b>{inCart.quantity[m.id]}</b></Typography>
-                                            <Typography variant="p">{ m.price * inCart.quantity[m.id] }฿</Typography>
+                                            <Typography variant="body2">Quantity: <b>{inCart.quantity[m.id]}</b></Typography>
+                                            <Typography variant="body2">{ m.price * inCart.quantity[m.id] }฿</Typography>
                                         </article>
                                     </Box>
                                 ) }
