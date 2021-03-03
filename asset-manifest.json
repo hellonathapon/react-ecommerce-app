@@ -1,0 +1,28 @@
+{
+  "files": {
+    "main.css": "/react-ecommerce-app/static/css/main.6dea0f05.chunk.css",
+    "main.js": "/react-ecommerce-app/static/js/main.e0915921.chunk.js",
+    "main.js.map": "/react-ecommerce-app/static/js/main.e0915921.chunk.js.map",
+    "runtime-main.js": "/react-ecommerce-app/static/js/runtime-main.fc270dc7.js",
+    "runtime-main.js.map": "/react-ecommerce-app/static/js/runtime-main.fc270dc7.js.map",
+    "static/js/2.b567f4db.chunk.js": "/react-ecommerce-app/static/js/2.b567f4db.chunk.js",
+    "static/js/2.b567f4db.chunk.js.map": "/react-ecommerce-app/static/js/2.b567f4db.chunk.js.map",
+    "static/js/3.d0f3b009.chunk.js": "/react-ecommerce-app/static/js/3.d0f3b009.chunk.js",
+    "static/js/3.d0f3b009.chunk.js.map": "/react-ecommerce-app/static/js/3.d0f3b009.chunk.js.map",
+    "index.html": "/react-ecommerce-app/index.html",
+    "static/css/main.6dea0f05.chunk.css.map": "/react-ecommerce-app/static/css/main.6dea0f05.chunk.css.map",
+    "static/js/2.b567f4db.chunk.js.LICENSE.txt": "/react-ecommerce-app/static/js/2.b567f4db.chunk.js.LICENSE.txt",
+    "static/media/bike.png": "/react-ecommerce-app/static/media/bike.00d96c22.png",
+    "static/media/blue-shirt.png": "/react-ecommerce-app/static/media/blue-shirt.76a61a92.png",
+    "static/media/dell.png": "/react-ecommerce-app/static/media/dell.c688173d.png",
+    "static/media/plant.png": "/react-ecommerce-app/static/media/plant.24f3bdce.png",
+    "static/media/red-hoodie.png": "/react-ecommerce-app/static/media/red-hoodie.840ada6d.png",
+    "static/media/shoes.png": "/react-ecommerce-app/static/media/shoes.2fa50e7c.png"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.fc270dc7.js",
+    "static/js/2.b567f4db.chunk.js",
+    "static/css/main.6dea0f05.chunk.css",
+    "static/js/main.e0915921.chunk.js"
+  ]
+}
