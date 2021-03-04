@@ -1,13 +1,16 @@
 import React from 'react'
-import { connect } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import { Button, IconButton } from '@material-ui/core'
 import { Favorite, FavoriteBorder } from '@material-ui/icons'
 
-function AddToCart({ item, handleFavState, addItemToCart }) {
+function AddToCart({ item }) {
+
+    const dispatch = useDispatch()
+
     return (
         <>
            <Button 
-                onClick={ () => addItemToCart(item)}
+                onClick={() => dispatch({type: "ADD_ITEM", payload: item})}
                 disabled={item.stock < 1} 
                 variant="outlined" 
                 color="primary" 
@@ -15,7 +18,7 @@ function AddToCart({ item, handleFavState, addItemToCart }) {
                 Add to cart
             </Button>
             <IconButton 
-                onClick={() => handleFavState(item.id)}
+                onClick={() => dispatch({type: "FAVOURITE", payload: item.id})}
                 color="secondary" 
             >
                     {/* conditionally display icon bases on its `isFav` */}
@@ -25,11 +28,4 @@ function AddToCart({ item, handleFavState, addItemToCart }) {
     )
 }
 
-const mapDispatchToProps = (dispatch) => {
-    return {
-        handleFavState: (id) => dispatch({ type: "FAVOURITE", payload: id}),
-        addItemToCart: (item) => dispatch({ type: "ADD_ITEM", payload: item })
-    }
-}
-
-export default connect(null, mapDispatchToProps) (AddToCart)
+export default AddToCart

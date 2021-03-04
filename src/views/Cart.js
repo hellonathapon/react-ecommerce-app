@@ -1,6 +1,6 @@
 import React from 'react'
 import Layout from '../components/Layout'
-import { connect } from 'react-redux'
+import { useSelector } from 'react-redux'
 import { Grid, Typography, Box, Paper, Button } from '@material-ui/core'
 import { makeStyles } from '@material-ui/core/styles'
 
@@ -16,8 +16,11 @@ const useStyles = makeStyles({
     }
 })
 
-function Cart({ products, inCart }) {
+function Cart() {
     const classes = useStyles()
+
+    const products = useSelector(state => state.products)
+    const inCart = useSelector(state => state.inCart)
 
     // calculate total price with each item quantity multiply
     const calcTotal = products.map(p => inCart.quantity[p.id] > 0 ? p.price * inCart.quantity[p.id] : 0).reduce((s, i) => s + i);
@@ -71,6 +74,5 @@ function Cart({ products, inCart }) {
     )
 }
 
-const mapStateToProps = state => ({ products: state.products ,inCart: state.inCart })
 
-export default connect(mapStateToProps) (Cart)
+export default Cart

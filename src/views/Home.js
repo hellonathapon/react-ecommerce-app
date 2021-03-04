@@ -5,9 +5,11 @@ import {
 } from '@material-ui/core';
 import Layout from '../components/Layout';
 import Products from '../components/home/Products'
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 
-function Home({ products }) {
+function Home() {
+
+    const products = useSelector(state => state.products)
 
     const [checkboxValue, setCheckboxValue] = React.useState({
         clothes: false,
@@ -63,6 +65,4 @@ function Home({ products }) {
     )
 }
 
-const mapStateToProps = state => ({ products: state.products });
-
-export default connect(mapStateToProps) (Home);
+export default Home

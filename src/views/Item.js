@@ -1,13 +1,16 @@
 import React from 'react'
 import Layout from '../components/Layout'
-import { connect } from 'react-redux'
+import { useSelector } from 'react-redux'
+import { useParams } from 'react-router-dom'
 import { Grid, Paper, Box, Typography, } from '@material-ui/core'
 import Rating from '@material-ui/lab/Rating'
 import AddToCart from '../components/AddToCart'
 
 
-function Item({ item }) {
+function Item() {
 
+    const { id } = useParams()
+    const item = useSelector(state => state.products.filter(k => k.id === parseInt(id)))
     const p = item[0]
     
     return (
@@ -43,10 +46,5 @@ function Item({ item }) {
  * NOTE: there is HOC way @withRouter to access these props from Route if that component isn't
  * direct child of the particular Route. 
  */
-const mapStateToProps = (state, ownProps) => {  
-    return {                                      
-        item: state.products.filter(k => k.id === parseInt(ownProps.match.params.id))
-    }                         
-}
 
-export default connect(mapStateToProps) (Item)
+export default Item

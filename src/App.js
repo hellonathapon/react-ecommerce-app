@@ -17,9 +17,15 @@ function App() {
           {/* NOTE: Nested component into <Route/> is work but to render but component
               cannot access props, param, history out of the route.
           */}
-          <Route path="/cart" component={Cart} />
-          <Route path="/:id" component={Item} />
-          <Route path="/" component={Home} />
+          <Route path="/cart">
+            <Cart/>
+          </Route>
+          <Route path="/:id">
+            <Item />
+          </Route>
+          <Route path="/">
+            <Home/>
+          </Route>
         </Switch>
       </div>
     </Router>

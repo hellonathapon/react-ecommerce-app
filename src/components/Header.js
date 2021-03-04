@@ -1,8 +1,8 @@
 import React from 'react';
 import { makeStyles } from '@material-ui/core/styles';
-import { AppBar,Toolbar, Container, Typography, Button, IconButton, Badge, Avatar } from '@material-ui/core';
+import { AppBar,Toolbar, Container, Typography, IconButton, Badge, Avatar } from '@material-ui/core';
 import { ShoppingCart } from '@material-ui/icons'
-import { connect } from 'react-redux';
+import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom'
 
 const useStyles = makeStyles({
@@ -20,8 +20,10 @@ const useStyles = makeStyles({
     },
 })
 
-function Header({ inCart }) {
+function Header() {
     const classes = useStyles();
+
+    const inCart = useSelector(state => state.inCart)
 
     return (
         <AppBar variant="outlined" className={classes.white}>
@@ -46,6 +48,5 @@ function Header({ inCart }) {
     )
 }
 
-const mapStateToProps = state => ({ inCart: state.inCart });
 
-export default connect(mapStateToProps) (Header);
+export default Header
